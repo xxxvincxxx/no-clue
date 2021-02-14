@@ -401,3 +401,4 @@ I would enrich the model adding the covariates.
 2. I would explore different models available. In the last 2 years a lot of models assuming time/space have been developed. The state-of-the-art in Germany is the Nowcasting model used by Felix Günther (https://www.medrxiv.org/content/10.1101/2020.06.26.20140210v2), which is the actual nowcasting method applied in the official RKI reports ("Based on an persons age, the reporting week and weekday, we sampled the expected reporting delay from the original Weibull GAMLSS imputation model and derived the artificial disease onset date for each case").
 
 
+
