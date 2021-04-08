@@ -1,7 +1,6 @@
 ##############
 ### MSG CVR ##
 ##############
-
 library(tidyverse)
 
 # Define the structure of the matrix
@@ -17,7 +16,6 @@ platform <- rep(c("IOS", "IOS", "Android", "Android"), 2)
 all_cnt <- c(174000, 540000, 526000, 160000)
 # "Views"
 subscriptions <- c(16200, 46800, 38400, 11000)
-
 
 non_subscriptions <- all_cnt - subscriptions
 weight <- c(non_subscriptions, subscriptions)
@@ -43,7 +41,9 @@ df_long <- df %>%
 ## Run the regression on the "long" df 
 summary(lm(y ~ trt + platform, df_long)) 
 
-
 ## Analyze:
-
-
+# T_A
+# IOS
+## Significant !!!
+## for Both: trtA = 0.54%, Message A 
+## seems to be better on iOS and on Android, and on Both
