@@ -9,9 +9,16 @@ set.seed(100)
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
 
-first_seen <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
+first_seen <- sample(seq(as.Date('2018/08/20'), as.Date('2018/10/01'), by="day"), 50)
 user_id <- as.character(round(runif(n = 50, min = 1000, max = 2000),0))
 users <- data.frame(user_id, first_seen)
+
+# extract week and count
+users %>%
+  mutate(week = floor_date(first_seen, "weeks", week_start = 1)) %>%
+  group_by(week) %>%
+  summarise(n = n())
+
 
 
 ## Mettiamo 5 settimane tipo:
