@@ -8,12 +8,12 @@ set.seed(100)
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
 
-dates <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
+first_seen <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
 user_id <- as.character(round(runif(n = 50, min = 1000, max = 2000),0))
-users <- data.frame(user_id, dates)
+users <- data.frame(user_id, first_seen)
 
 users %>%
-  grou
+  group_by(first_seen)
 
 ## Mettiamo 5 settimane tipo:
 #### 2018-08-20 + 5 weeks
