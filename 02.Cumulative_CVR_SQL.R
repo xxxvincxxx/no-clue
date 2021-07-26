@@ -1,6 +1,7 @@
 ## Generate random sample 
 ## Add random seed for replicability
 library(tidyverse)
+library(lubridate)
 
 set.seed(100)
 
@@ -12,8 +13,6 @@ first_seen <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day")
 user_id <- as.character(round(runif(n = 50, min = 1000, max = 2000),0))
 users <- data.frame(user_id, first_seen)
 
-users %>%
-  group_by(first_seen)
 
 ## Mettiamo 5 settimane tipo:
 #### 2018-08-20 + 5 weeks
