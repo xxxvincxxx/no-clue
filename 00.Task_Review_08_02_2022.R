@@ -47,3 +47,20 @@ summary(lm(y ~ trt + platform, df_long))
 ## Significant !!!
 ## for Both: trtA = 0.54%, Message A 
 ## seems to be better on iOS and on Android, and on Both
+
+###########################
+### SQL Window Functions ##
+###########################
+
+
+
+
+
+
+
+
+#################
+### Nowcasting ##
+#################
+
+
