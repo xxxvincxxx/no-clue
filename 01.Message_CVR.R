@@ -11,7 +11,13 @@ df <- data.frame(stringsAsFactors=FALSE,
 # Calculate conversion rates 
 
 df %>%
-  mutate(cvr = round(conversions/clicks*100,2)) 
+  mutate(cvr = round(conversions/clicks*100,1)) 
+
+# Aggregate per type
+df %>%
+  group_by(type) %>%
+  summarise(conversions = sum(conversions),
+            clicks = sum(clicks)) %>%
+  mutate(cvr = round(conversions / clicks*100,1))
 
 
-# 
