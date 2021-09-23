@@ -1,10 +1,15 @@
 ## Generate random sample 
+## Add random seed for replicability
+set.seed(100)
 
 ### Table users
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
-dates <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
 
+dates <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
+user_id <- as.character(round(runif(n = 50, min = 1000, max = 2000),0))
+
+users <- data.frame(user_id, dates)
 
 ## Mettiamo 5 settimane tipo:
 #### 2018-08-20 + 5 weeks
