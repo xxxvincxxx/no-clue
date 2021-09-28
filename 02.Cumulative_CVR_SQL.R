@@ -1,5 +1,9 @@
 ## Generate random sample 
 ## Add random seed for replicability
+
+## https://www.db-fiddle.com/f/q3MF5Uanrgme5HFQcP2mK9/0
+## https://stackoverflow.com/questions/70878642/cumulative-calculation-in-window-functions/70880004?noredirect=1#comment125305841_70880004
+
 library(tidyverse)
 library(lubridate)
 

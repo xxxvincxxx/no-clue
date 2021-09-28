@@ -1,10 +1,7 @@
 library(tidyverse)
 library(broom)
-#library(infer)
-#install.packages("gtsummary")
 
 # Create df
-
 df <- data.frame(stringsAsFactors=FALSE,
           type = c("A", "A", "B", "B"),
       setting = c("platform_1", "platform_2", "platform_1", "platform_2"),
@@ -16,11 +13,6 @@ df <- data.frame(stringsAsFactors=FALSE,
 df %>%
   mutate(prop = round(conversions/clicks*100,1)) -> df
 
-# reshape data
-df %>%
-  spread()
-
-
 # Aggregate per type
 df %>%
   group_by(type) %>%
@@ -29,15 +21,19 @@ df %>%
   mutate(cvr = round(conversions / clicks*100,1)) -> df_agg
 
 # Apply propotion test on aggregate df 
-
 prop.test(x = c(54600, 57800), n = c(700000, 700000))
 
 ## -> Simpson Paradox
 ### The question has no clear answer
 
 
-
 ##### Dataset
+## I think this's may be a data record error, you may reverse Android a/b tag: 
+# If you have randomized, it is very unlikely to observe such proportions:
+# IOS a/b sample ratio: 174000 / 540000 = 0.32
+# Android a/b sample ratio: 526000 / 160000 = 3.29
+# If this is by design, regression adjust/stratified average treatment effect may be helpful 
+# for estimate Both treatment effect.
 
 y <- rep(0:1, c(4, 4))
 trt <- rep(c("A", "B"), 4)
@@ -54,5 +50,15 @@ df <- tibble(
   platform,
   weight
 )
+
+df_long <- df %>% 
+  rowwise() %>% 
+  mutate(ids = list(seq(1, weight))) %>% 
+  unnest(ids)
+
+summary(lm(y ~ trt + platform, df_long)) 
+
+# for Both: trtA = 0.54%. Message A seems to be better on iOS and on Android, and on Both.
+
 
 
