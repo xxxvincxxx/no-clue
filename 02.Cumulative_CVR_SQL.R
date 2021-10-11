@@ -3,6 +3,7 @@
 ### Table users
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
+dates <- sample(seq(as.Date('2018/01/01'), as.Date('2018/03/01'), by="day"), 50)
 
 
 ## Mettiamo 5 settimane tipo:
