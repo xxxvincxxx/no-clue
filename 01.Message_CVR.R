@@ -1,4 +1,5 @@
 library(tidyverse)
+library(broom)
 
 # Create df
 
@@ -18,6 +19,10 @@ df %>%
   group_by(type) %>%
   summarise(conversions = sum(conversions),
             clicks = sum(clicks)) %>%
-  mutate(cvr = round(conversions / clicks*100,1))
+  mutate(cvr = round(conversions / clicks*100,1)) -> df_agg
+
+# Apply propotion test on aggregate df 
 
 
+
+            
