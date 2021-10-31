@@ -4,6 +4,9 @@
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
 
+## Mettiamo 5 settimane tipo:
+#### 2018-08-20 + 5 weeks
+
 
 ### Table paid_subscription
 # 1. user_id - VARCHAR(40)
