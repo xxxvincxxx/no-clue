@@ -1,7 +1,7 @@
 library(tidyverse)
 library(broom)
-library(infer)
-#install.packages("infer")
+#library(infer)
+#install.packages("gtsummary")
 
 # Create df
 
@@ -14,7 +14,12 @@ df <- data.frame(stringsAsFactors=FALSE,
 # Calculate conversion rates 
 
 df %>%
-  mutate(cvr = round(conversions/clicks*100,1)) 
+  mutate(prop = round(conversions/clicks*100,1)) -> df
+
+# reshape data
+df %>%
+  spread()
+
 
 # Aggregate per type
 df %>%
@@ -25,5 +30,7 @@ df %>%
 
 # Apply propotion test on aggregate df 
 
-df_agg
-            
+prop.test(x = c(54600, 57800), n = c(700000, 700000))
+
+  
+
