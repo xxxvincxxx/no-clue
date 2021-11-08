@@ -1,5 +1,7 @@
 library(tidyverse)
 library(broom)
+library(infer)
+#install.packages("infer")
 
 # Create df
 
@@ -23,6 +25,5 @@ df %>%
 
 # Apply propotion test on aggregate df 
 
-
-
+df_agg
             
