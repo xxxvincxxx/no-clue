@@ -32,5 +32,6 @@ df %>%
 
 prop.test(x = c(54600, 57800), n = c(700000, 700000))
 
+## -> Simpson Paradox
   
 
