@@ -8,8 +8,10 @@ set.seed(100)
 ### Table users
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
-
-first_seen <- sample(seq(as.Date('2018/08/20'), as.Date('2018/10/01'), by="day"), 100, replace = T)
+first_seen <- sample(seq(as.Date('2018/08/20'), 
+                         as.Date('2018/10/01'),
+                         by="day"), 100, 
+                         replace = T)
 user_id <- as.character(round(runif(n = 100, min = 1000, max = 2000),0))
 users <- data.frame(user_id, first_seen)
 
@@ -23,6 +25,11 @@ users %>%
 # 1. user_id - VARCHAR(40)
 # 2. event_time - TIMESTAMP 
 # 3. subscription_product_id - VARCHAR(40)
+
+# subset of user_id 
+users %>%
+  sample_frac(0.2) %>%
+  mutate(event_time = )
 
 
 
