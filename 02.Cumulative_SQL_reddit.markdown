@@ -1,0 +1,57 @@
+Hi guys! I have a question regarding a problem for cohort analysis in SQL (in Postgres dialect).
+
+I have two tables:
+  
+  * **users**
+  
+  &#8203;
+  
+  user_id     VARCHAR(40)
+first_seen  TIMESTAMP
+
+* **subscriptions**
+  
+  &#8203;
+  
+  user_id                  VARCHAR(40)
+event_time               TIMESTAMP
+subscription_product_id  VARCHAR(40)
+
+I want to write a query that aggregates user\_ids on weekly cohorts  based on `first_seen` and computes the cumulative subscriptions at a given offset time:
+  
+  * D1 (same day)
+* D30 (a month after)
+* D90 
+* D360
+
+I.e. D90 for a given weekly cohort is the fraction of the users from that cohort that subscribed within the 90 days. 
+
+The issue here is that a user (as in the `subscription` table) can purchase multiple `subscription_product_id`, and in that case I want only to consider their **first purchase**.
+
+An example of the outcome would be: 
+  
+  &#x200B;
+  
+  |cohort|number\_users|offset|cumulative\_subscription\_rate|
+  |:-|:-|:-|:-|
+  |2018-08-20 |1765 |D1|0.16|
+  |2018-08-20 |1765 |D30|0.18|
+  |2018-08-20 |1765 |D90|0.20|
+  |2018-08-20 |1765 |D360|0.25|
+  |2018-08-27|2147 |D1|0.14|
+  |2018-08-27|2147 |D30|0.17|
+  
+  And so on.   
+
+
+I imagine that the way to approach the problem, once the two tables are joined, 
+
+is to use window a window function to calculate the cumulative value at different o
+
+offsets,  but I can't figure out exactly how. 
+
+Any hint is highly appreciated.
+
+Thanks!
+
+&#x200B;

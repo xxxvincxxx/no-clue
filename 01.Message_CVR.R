@@ -34,5 +34,25 @@ prop.test(x = c(54600, 57800), n = c(700000, 700000))
 
 ## -> Simpson Paradox
 ### The question has no clear answer
-  
+
+
+
+##### Dataset
+
+y <- rep(0:1, c(4, 4))
+trt <- rep(c("A", "B"), 4)
+platform <- rep(c("IOS", "IOS", "Android", "Android"), 2)
+all_cnt <- c(174000, 540000, 526000, 160000)
+subscriptions <- c(16200, 46800, 38400, 11000)
+non_subscriptions <- all_cnt - subscriptions
+
+weight <- c(non_subscriptions, subscriptions)
+
+df <- tibble(
+  y,
+  trt = factor(trt, levels = c("B", "A")),
+  platform,
+  weight
+)
+
 

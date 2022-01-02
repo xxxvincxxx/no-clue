@@ -8,6 +8,7 @@ set.seed(100)
 ### Table users
 # 1. user_id - VARCHAR(40)
 # 2. first_seen - TIMESTAMP 
+
 first_seen <- sample(seq(as.Date('2018/08/20'), 
                          as.Date('2018/10/01'),
                          by="day"), 100, 
